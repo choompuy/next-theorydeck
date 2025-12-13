@@ -1,0 +1,11 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.theories {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
