@@ -1,0 +1,63 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dashboard-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.dashboard-grid.metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.dashboard-grid.activity {
+    grid-template-columns: 2fr 1fr;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid.metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-grid.activity {
+        grid-template-columns: 1fr;
+    }
+}
+
+.metric {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.list li span {
+    flex-shrink: 0;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

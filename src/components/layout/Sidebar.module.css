@@ -1,0 +1,9 @@
+.sidebar {
+    background: var(--bg-app);
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.nav {
+    gap: 0.25rem;
+}

@@ -1,11 +1,48 @@
-.main {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
 }
 
-.theories {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.card-wrapper {
+    text-decoration: none;
+}
+
+.card-header {
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.title {
+    font-weight: 700;
+}
+
+.card-wrapper:hover .title {
+    text-decoration: underline;
+}
+
+.tldr {
+    font-size: 14px;
+}
+
+.status {
+    font-size: 12px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+}
+
+.ACTIVE {
+    background: var(--active-bg);
+    color: var(--active);
+}
+
+.UNDER_REVIEW {
+    background: var(--under-review-bg);
+    color: var(--under-review);
+}
+
+.ARCHIVED {
+    background: var(--archived-bg);
+    color: var(--archived);
 }

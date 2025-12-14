@@ -1,5 +1,6 @@
-import styles from "./page.module.css";
 import { getTheoryPageCached } from "@/features/theory/theory.service";
+import { EvidenceTabs } from "@/components/evidence/EvidenceTabs";
+import { ConfidenceBar } from "@/components/theory/ConfidenceBar";
 
 export default async function TheoryPage({ params }: { params: { slug: string } }) {
     const { slug } = await params;
@@ -8,37 +9,57 @@ export default async function TheoryPage({ params }: { params: { slug: string } 
     if (!data) return <div>Theory not found</div>;
 
     return (
-        <main className={styles.main}>
-            <h1>{data.title}</h1>
-            <p>{data.tldr}</p>
+        <section className="theory-page">
+            <header className="theory-header">
+                <h1>{data.title}</h1>
 
-            <div>
-                <strong>Community confidence:</strong> {data.confidence}%
-            </div>
+                <div className="theory-meta">
+                    <span className={`status ${data.status.toLowerCase()}`}>{data.status}</span>
+                </div>
+            </header>
 
-            <section className={styles.section}>
-                <h2>Top arguments FOR</h2>
-                <div className="arguments">
+            <section className="card">
+                <h3>TL;DR</h3>
+                <p>{data.tldr}</p>
+            </section>
+
+            <section className="card">
+                <h3>Community confidence</h3>
+                <ConfidenceBar value={data.confidence} />
+            </section>
+
+            <section className="grid two">
+                <section className="card">
+                    <h3>Top arguments FOR</h3>
+                    {data.topPro.length === 0 && <p className="muted">No supporting evidence yet</p>}
                     {data.topPro.map((e) => (
-                        <div key={e.id}>
+                        <article key={e.id} className="evidence">
                             <p>{e.content}</p>
                             <small>Score: {e.score}</small>
-                        </div>
+                        </article>
                     ))}
-                </div>
+                </section>
+
+                <section className="card">
+                    <h3>Top arguments AGAINST</h3>
+                    {data.topCon.length === 0 && <p className="muted">No opposing evidence yet</p>}
+                    {data.topCon.map((e) => (
+                        <article key={e.id} className="evidence">
+                            <p>{e.content}</p>
+                            <small>Score: {e.score}</small>
+                        </article>
+                    ))}
+                </section>
             </section>
 
-            <section className={styles.section}>
-                <h2>Top arguments AGAINST</h2>
-                <div className="arguments">
-                    {data.topCon.map((e) => (
-                        <div key={e.id}>
-                            <p>{e.content}</p>
-                            <small>Score: {e.score}</small>
-                        </div>
-                    ))}
+            <section className="card">
+                <div className="evidence-header">
+                    <h3>All evidence</h3>
+                    <a href={`/evidence/new?theory=${data.slug}`}>Add evidence</a>
                 </div>
+
+                <EvidenceTabs pro={data.topPro} con={data.topCon} />
             </section>
-        </main>
+        </section>
     );
 }

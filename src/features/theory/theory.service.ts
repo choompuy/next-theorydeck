@@ -1,6 +1,6 @@
 import { cache } from "react";
 import { theoryRepo } from "./theory.repo";
-import { evidenceRepo } from "../evidence/evidence.repo";
+import { evidenceRepo } from "@/features/evidence/evidence.repo";
 
 function calcConfidence(pro: number, con: number) {
     const total = pro + con;
@@ -9,6 +9,10 @@ function calcConfidence(pro: number, con: number) {
 }
 
 export const theoryService = {
+    async getAllTheories() {
+        return theoryRepo.getAll();
+    },
+
     async getTheoryPage(slug: string) {
         const t = await theoryRepo.getBySlug(slug);
         if (!t) return null;

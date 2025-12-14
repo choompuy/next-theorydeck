@@ -1,0 +1,33 @@
+:root {
+    --bg-app: #131114;
+    --bg-surface: #1d1d1d;
+    --bg-card: #1a181b;
+    --bg-hover: #232842;
+
+    --fill-hover: rgba(255, 255, 255, 0.1);
+    --fill-active: rgba(255, 255, 255, 0.05);
+
+    --text-primary: #e4e7ef;
+    --text-secondary: #a6aec7;
+    --text-muted: #7c849c;
+
+    --border-subtle: rgba(255, 255, 255, 0.1);
+    --border-active: rgba(255, 255, 255, 0.2);
+
+    --pro: #7fbf9f;
+    --pro-bg: rgba(127, 191, 159, 0.12);
+
+    --con: #c78a8a;
+    --con-bg: rgba(199, 138, 138, 0.12);
+
+    --font-body: system-ui, Inter, sans-serif;
+
+    --active-bg: rgba(34, 197, 94, 0.15);
+    --active: #22c55e;
+
+    --under-review-bg: rgba(234, 179, 8, 0.15);
+    --under-review: #eab308;
+
+    --archived-bg: rgba(148, 163, 184, 0.15);
+    --archived: #94a3b8;
+}
