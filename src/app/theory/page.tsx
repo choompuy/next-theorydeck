@@ -1,8 +1,8 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { theoryService } from "@/features/theory/theory.service";
-import { BaseCard } from "@/components/ui/card/BaseCard";
-import { BaseCardContent } from "@/components/ui/card/BaseCardContent";
+import { BaseCard } from "@/components/ui/BaseCard";
+import { BaseTag } from "@/components/ui/BaseTag";
 
 export default async function TheoryListPage() {
     const theories = await theoryService.getAllTheories();
@@ -20,12 +20,10 @@ export default async function TheoryListPage() {
                         <BaseCard className="w-full h-full">
                             <div className={`${styles["card-header"]} flex-row w-full`}>
                                 <span className={`${styles.title} text-overflow-hidden`}>{t.title}</span>
-                                <span className={`${styles.status} ${styles[t.status]}`}>{t.status}</span>
+                                <BaseTag status={t.status} label={t.status} />
                             </div>
 
-                            <BaseCardContent>
-                                <span className={styles.tldr}>{t.tldr}</span>
-                            </BaseCardContent>
+                            <span className={styles.tldr}>{t.tldr}</span>
                         </BaseCard>
                     </Link>
                 ))}

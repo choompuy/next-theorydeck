@@ -2,7 +2,7 @@ import { count, desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { evidence, theory } from "@/db/schema";
 
-export const theoryRepo = {
+export const theoryQueries = {
     getAll() {
         return db.query.theory.findMany({
             orderBy: desc(theory.createdAt),

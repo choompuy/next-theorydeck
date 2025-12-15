@@ -1,0 +1,21 @@
+.status {
+    font-size: 12px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    background: var(--fill-active);
+}
+
+.active {
+    background: var(--active-bg);
+    color: var(--active);
+}
+
+.under_review {
+    background: var(--under-review-bg);
+    color: var(--under-review);
+}
+
+.archived {
+    background: var(--archived-bg);
+    color: var(--archived);
+}

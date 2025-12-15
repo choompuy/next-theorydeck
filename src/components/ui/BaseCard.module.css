@@ -1,6 +1,6 @@
 .card {
+    justify-content: space-between;
     padding: 1rem;
-    gap: 1rem;
     border: 1px solid var(--border-subtle);
     border-radius: 0.75rem;
     background: var(--bg-card);
@@ -8,4 +8,8 @@
 
 .card-header {
     font-size: 14px;
+}
+
+.card-content {
+    justify-self: flex-end;
 }

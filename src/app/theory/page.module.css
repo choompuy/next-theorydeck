@@ -25,24 +25,3 @@
 .tldr {
     font-size: 14px;
 }
-
-.status {
-    font-size: 12px;
-    padding: 0.25rem 0.5rem;
-    border-radius: 1rem;
-}
-
-.ACTIVE {
-    background: var(--active-bg);
-    color: var(--active);
-}
-
-.UNDER_REVIEW {
-    background: var(--under-review-bg);
-    color: var(--under-review);
-}
-
-.ARCHIVED {
-    background: var(--archived-bg);
-    color: var(--archived);
-}

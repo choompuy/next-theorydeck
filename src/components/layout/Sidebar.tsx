@@ -30,7 +30,7 @@ export function Sidebar() {
 
             <nav className={`${styles.nav} flex-column`}>
                 {NAVS.map((val, index) => (
-                    <BaseButton key={"nav-" + index} href={val.href} wFull isActive={isActiveRoute(pathname, val.href)}>
+                    <BaseButton key={"nav-" + index} href={val.href} isActive={isActiveRoute(pathname, val.href)} wFull>
                         <val.icon />
                         <span>{val.label}</span>
                     </BaseButton>

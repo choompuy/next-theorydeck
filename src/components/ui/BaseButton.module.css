@@ -16,22 +16,38 @@
     text-align: start;
     text-decoration: none;
     font-size: 14px;
+    cursor: pointer;
 }
 
-.is-active .button {
+.primary,
+.icon {
+    background: transparent;
+    border: none;
+}
+
+.is-active .primary,
+.is-active .icon {
     background: var(--fill-active);
 }
 
-.button:hover {
+.primary:hover,
+.icon:hover {
     background: var(--fill-hover);
 }
 
-.button.pro {
-    border-color: var(--pro);
-    color: var(--pro);
+.secondary {
+    background: var(--bg-card);
+    border: 1px solid var(--border-active);
 }
 
-.button.con {
-    border-color: var(--con);
-    color: var(--con);
+.is-active .secondary {
+    background: var(--border-active);
+}
+
+.secondary:hover {
+    background: var(--fill-hover);
+}
+
+.icon {
+    padding: 0.25rem;
 }

@@ -8,6 +8,14 @@
     flex-direction: row;
 }
 
+.justify-space-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
 .w-full {
     width: 100%;
 }

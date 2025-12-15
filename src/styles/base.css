@@ -14,6 +14,12 @@ body {
     font-family: var(--font-body);
 }
 
+input,
+textarea {
+    font: inherit;
+}
+
+button,
 a {
     color: inherit;
 }
@@ -24,4 +30,5 @@ p {
 
 small {
     color: var(--text-muted);
+    font-size: 12px;
 }

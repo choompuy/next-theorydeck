@@ -1,6 +1,7 @@
 import { cache } from "react";
-import { theoryRepo } from "./theory.repo";
-import { evidenceRepo } from "@/features/evidence/evidence.repo";
+import { theoryQueries } from "./theory.queries";
+import { evidenceQueries } from "@/features/evidence/evidence.queries";
+import { tagQueries } from "../tag/tag.queries";
 
 function calcConfidence(pro: number, con: number) {
     const total = pro + con;
@@ -10,18 +11,23 @@ function calcConfidence(pro: number, con: number) {
 
 export const theoryService = {
     async getAllTheories() {
-        return theoryRepo.getAll();
+        return theoryQueries.getAll();
     },
 
     async getTheoryPage(slug: string) {
-        const t = await theoryRepo.getBySlug(slug);
+        const t = await theoryQueries.getBySlug(slug);
         if (!t) return null;
 
-        const pro = await evidenceRepo.getByTheory(t.id, "PRO");
-        const con = await evidenceRepo.getByTheory(t.id, "CON");
+        const tags = await tagQueries.getByTheory(t.id);
 
-        const proScore = pro.reduce((s, e) => s + e.score, 0);
-        const conScore = con.reduce((s, e) => s + e.score, 0);
+        const allPro = await evidenceQueries.getByTheory(t.id, "PRO");
+        const allCon = await evidenceQueries.getByTheory(t.id, "CON");
+
+        const topPro = allPro.slice(0, 5);
+        const topCon = allCon.slice(0, 5);
+
+        const proScore = allPro.reduce((s, e) => s + e.score, 0);
+        const conScore = allCon.reduce((s, e) => s + e.score, 0);
 
         return {
             id: t.id,
@@ -29,11 +35,16 @@ export const theoryService = {
             title: t.title,
             tldr: t.tldr,
             status: t.status,
+            
+            tags,
 
             confidence: calcConfidence(proScore, conScore),
 
-            topPro: pro.slice(0, 5),
-            topCon: con.slice(0, 5),
+            topPro,
+            topCon,
+
+            allPro,
+            allCon,
         };
     },
 };

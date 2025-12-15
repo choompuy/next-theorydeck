@@ -4,15 +4,18 @@ import { evidence, evidenceVote } from "@/db/schema";
 
 const scoreExpr = sql<number>`COALESCE(SUM(${evidenceVote.weight}), 0)`;
 
-export const evidenceRepo = {
+export const evidenceQueries = {
     getByTheory(theoryId: string, side: "PRO" | "CON") {
         return db
             .select({
                 id: evidence.id,
-                content: evidence.content,
+                theoryId: evidence.theoryId,
                 side: evidence.side,
+                content: evidence.content,
                 source: evidence.source,
                 context: evidence.context,
+                status: evidence.status,
+                createdAt: evidence.createdAt,
                 score: scoreExpr,
             })
             .from(evidence)
